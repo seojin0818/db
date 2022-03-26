@@ -1,1 +1,1 @@
-SELECT * FROM TAB;
+SELECT tname FROM TAB;
