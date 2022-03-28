@@ -91,11 +91,12 @@ select * from dept;
         
         describe    테이블이름;
         desc    테이블이름;
+        
 */
 
 -- emp 테이블의 구조를 조회해보자.
-describe emp;
 
+describe emp;
 desc emp;
 
 /*
@@ -110,8 +111,10 @@ desc emp;
             ==> 고정 문자수 문자열 데이터타입
             
                 형식 ]
+                
                     CHAR(숫자) ==> 바이트수만큼의 문자 기억
                     CHAR(숫자 CHAR) ==> 숫자개수만큼의 문자 기억
+                    
             VARCHAR2
             ==> 가변 문자수 문자열 데이터타입
                     VARCHAR2(숫자) ==> 숫자수만큼의 바이트만큼 문자 기억
@@ -153,9 +156,11 @@ desc emp;
         
                 ]
         ;
+        
 */
 
 -- 부서 정보 테이블의 정보를 조회하세요.
+
 SELECT
     deptno, dname, loc
 FROM
@@ -195,6 +200,7 @@ select '하리보' from emp;
         조건(결과값이 반드시 논리값이 되어야 함)
         
     조건 ]
+    
         비교연산자
         =   : 같다
         >   : 크다
@@ -226,6 +232,7 @@ select '하리보' from emp;
                 아스키코드 값으로 비교하기 때문에
                 
             참고 ]
+            
                 오라클은 문자와 문자열의 구분이 없음
                 대신 문자열 데이터의 대소문자는 반드시 구분해서 처리해야 함
                 
@@ -256,6 +263,7 @@ WHERE
 ;
 
 -- 사원 중 직급이 MANAGER이고 부서번호가 10번인 사원의 이름을 조회하세요.
+
 SELECT
     ename
 FROM
@@ -264,6 +272,7 @@ WHERE
     job = 'MANAGER' 
     AND deptno = 10
 ;
+
 -----------------------------------------------------------
 
 /*
@@ -359,6 +368,7 @@ SELECT
 FROM
     emp
 WHERE
+
 /*
     
     deptno = 10
@@ -410,6 +420,7 @@ WHERE
         sal >= 1000
         AND sal <= 3000
     ;
+    
 /*
 
     6. 직급이 MANAGER이면서 급여가 1000 이상인 사원들의
@@ -460,7 +471,7 @@ WHERE
         
         형식 ]
             
-            필드  LIKE '와일드카드'
+            필드 LIKE '와일드카드'
         
         의미 ] 
             
@@ -558,12 +569,15 @@ WHERE
             참고 ]
             
                 공백이 포함된 별칭의 경우는 큰 따옴표로 감싸줌
+                
 */
 
 -----------------------------------------------------------
 
 /*
+    
     LIKE
+    
 */
 
 /*
@@ -608,7 +622,7 @@ WHERE
 */
 
 SELECT
-    ename, job, hiredate, deptno
+    ename 이름, job 직급, hiredate 입사일, deptno 부서번호
 FROM
     emp
 WHERE
@@ -626,7 +640,7 @@ WHERE
 */
 
 SELECT
-    ename, job, sal
+    ename 이름, job 직급, sal 급여
 FROM
     emp
 WHERE
@@ -643,7 +657,7 @@ WHERE
 */
 
 SELECT
-    ename, job, sal
+    ename 이름, job 직급, sal 급여
 FROM
     emp
 WHERE
@@ -661,7 +675,7 @@ WHERE
 */
 
 SELECT
-    ename, job, sal
+    ename 이름, job 직급, sal 급여
 FROM
     emp
 WHERE
@@ -678,7 +692,7 @@ WHERE
 */
 
 SELECT
-    ename, job, hiredate
+    ename 이름, job 직급, hiredate 입사일
 FROM
     emp
 WHERE
@@ -696,7 +710,7 @@ WHERE
 */
 
 SELECT
-    ename, sal, job
+    ename 이름, sal 급여, job 
 FROM
     emp
 WHERE
@@ -715,7 +729,7 @@ WHERE
 */
 
 SELECT
-    ename, job, sal, deptno
+    ename 이름, job 직급, sal 급여, deptno 부서번호
 FROM
     emp
 WHERE
@@ -735,7 +749,7 @@ WHERE
 */
 
 SELECT
-    ename, job, hiredate
+    ename 이름, job 직급, hiredate 입사일
 FROM
     emp
 WHERE
@@ -754,7 +768,7 @@ WHERE
 */
 
 SELECT
-    ename, job, sal
+    ename 이름, job 직급, sal 급여
 FROM
     emp
 WHERE
@@ -772,7 +786,7 @@ WHERE
 */
 
 SELECT
-    ename, job, sal
+    ename 이름, job 직급, sal 급여
 FROM
     emp
 WHERE
@@ -789,7 +803,7 @@ WHERE
 */
 
 SELECT
-    ename, job, sal
+    ename 이름, job 직급, sal 급여
 FROM
     emp
 WHERE
@@ -807,7 +821,7 @@ WHERE
 */
 
 SELECT
-    ename, job, hiredate
+    ename 이름, job 직급, hiredate 입사일
 FROM
     emp
 WHERE
@@ -824,7 +838,7 @@ WHERE
 */
 
 SELECT
-    ename, job
+    ename 이름, job 직급
 FROM
     emp
 WHERE
@@ -846,7 +860,16 @@ WHERE
 */
 
 SELECT
-    ename, sal, hiredate
+    ename 이름, sal 급여, hiredate 입사일
+FROM
+    emp
+WHERE
+    hiredate LIKE '81/__/__'
+    OR hiredate LIKE '82/__/__'
+;
+
+SELECT
+   ename 이름, (sal * 1.1 ) 인상급여, hiredate 입사일
 FROM
     emp
 WHERE
@@ -864,7 +887,7 @@ WHERE
 */
 
 SELECT
-    ename, sal, comm
+    ename 이름, sal 급여, comm 커미션
 FROM
     emp
 WHERE
@@ -892,6 +915,7 @@ FROM
 SELECT 10 || 20 from dual;
 
 -- 사원들 이름에 Mr.를 붙여서 조회하세요.
+
 SELECT
     'Mr.' || ename 사원이름, sal || ' 달러' 급여, hiredate 입사일
 FROM
@@ -928,6 +952,3 @@ SELECT
 FROM
     emp
 ;
-
-
-
