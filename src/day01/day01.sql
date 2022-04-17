@@ -714,7 +714,7 @@ SELECT
 FROM
     emp
 WHERE
-    ename LIKE 'M%'
+    ename > 'M'
     AND sal >= 1000
 ;
 
