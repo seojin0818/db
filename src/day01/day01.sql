@@ -772,7 +772,7 @@ SELECT
 FROM
     emp
 WHERE
-    ename between 'C' and 'M'
+    ename between 'C' AND 'M'
 ;
 
 /*
@@ -869,7 +869,7 @@ WHERE
 ;
 
 SELECT
-   ename 이름, (sal * 1.1 ) 인상급여, hiredate 입사일
+   ename 이름, (sal * 1.1) 인상급여, hiredate 입사일
 FROM
     emp
 WHERE
