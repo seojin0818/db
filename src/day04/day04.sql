@@ -2,84 +2,85 @@
 
 /*
 
-    Âü°í ]
+    ì°¸ê³  ]
         
-        HAVING Àý
-        ==> ±×·ìÈ­ÇÑ °á°ú¸¦ ÇÊÅÍ¸µÇÒ ¶§
-            ÇÊÅÍ¸µ Á¶°ÇÀ» ±â¼úÇÏ´Â Àý
+        HAVING ì ˆ
+        ==> ê·¸ë£¹í™”í•œ ê²°ê³¼ë¥¼ í•„í„°ë§í•  ë•Œ
+            í•„í„°ë§ ì¡°ê±´ì„ ê¸°ìˆ í•˜ëŠ” ì ˆ
             
-            Âü°í ]
+            ì°¸ê³  ]
             
-                WHERE Àý¿¡´Â ±×·ìÇÔ¼ö »ç¿ë ºÒ°¡
-                HAVING Àý¿¡´Â ±×·ìÇÔ¼ö »ç¿ë °¡´É
+                WHERE ì ˆì—ëŠ” ê·¸ë£¹í•¨ìˆ˜ ì‚¬ìš© ë¶ˆê°€
+                HAVING ì ˆì—ëŠ” ê·¸ë£¹í•¨ìˆ˜ ì‚¬ìš© ê°€ëŠ¥
                 
 */
 
 /*
    
     JOIN 
-    ==> Relation Database Management System¿¡¼­´Â µ¥ÀÌÅÍÀÇ Áßº¹À» ÇÇÇÏ±â À§ÇØ¼­
-        Å×ÀÌºíÀ» ºÐ¸®ÇÏ°í ±×·¸°Ô ÇÔÀ¸·Î½á Å×ÀÌºíµé °£¿¡ °ü°è°¡ Çü¼º µÇ¾úÀ½
+    ==> Relation Database Management Systemì—ì„œëŠ” ë°ì´í„°ì˜ ì¤‘ë³µì„ í”¼í•˜ê¸° ìœ„í•´ì„œ
+        í…Œì´ë¸”ì„ ë¶„ë¦¬í•˜ê³  ê·¸ë ‡ê²Œ í•¨ìœ¼ë¡œì¨ í…Œì´ë¸”ë“¤ ê°„ì— ê´€ê³„ê°€ í˜•ì„± ë˜ì—ˆìŒ
         
-        ±×·±µ¥ ºÐ¸®µÈ Å×ÀÌºí¿¡¼­ µ¥ÀÌÅÍ¸¦ ÃßÃâÇØ³¾ ¶§ »ç¿ëÇÏ´Â ¹®¹ýÀÌ JOIN
+        ê·¸ëŸ°ë° ë¶„ë¦¬ëœ í…Œì´ë¸”ì—ì„œ ë°ì´í„°ë¥¼ ì¶”ì¶œí•´ë‚¼ ë•Œ ì‚¬ìš©í•˜ëŠ” ë¬¸ë²•ì´ JOIN
         
-        Âü°í ]
+        ì°¸ê³  ]
         
-            ¿À¶óÅ¬ ¿ª½Ã ER ÇüÅÂÀÇ µ¥ÀÌÅÍº£ÀÌ½º
-            ER
-                ¿£Æ¼Æ¼(Å×ÀÌºí)³¢¸®ÀÇ °ü°è¸¦ ÀÌ¾ß±âÇÏ°í
-                ÀÌ·± °ü°èµé·Î Å×ÀÌºíÀ» °ü¸®ÇÏ´Â µ¥ÀÌÅÍº£ÀÌ½º¸¦ °ü°èÇüµ¥ÀÌÅÍº£ÀÌ½º¶ó°í ÇÔ
+            ì˜¤ë¼í´ ì—­ì‹œ ER í˜•íƒœì˜ ë°ì´í„°ë² ì´ìŠ¤
+            ER (ì—”í‹°í‹°=í…Œì´ë¸”ê°„ì˜ ê´€ê³„)ë¥¼ ì´ì•¼ê¸°í•˜ê³ 
+            ì´ëŸ° ê´€ê³„ë“¤ë¡œ í…Œì´ë¸”ì„ ê´€ë¦¬í•˜ëŠ” ë°ì´í„°ë² ì´ìŠ¤ë¥¼ ê´€ê³„í˜•ë°ì´í„°ë² ì´ìŠ¤ë¼ê³  í•¨
         
-        Âü°í ]
+        ì°¸ê³  ]
         
-            °ü°èÇüµ¥ÀÌÅÍº£ÀÌ½º¿¡¼­´Â ¿©·¯°³ÀÇ Å×ÀÌºí¿¡¼­ µ¿½Ã¿¡ °Ë»öÇÏ´Â ±â´ÉÀº ÀÌ¹Ì °¡Áö°í ÀÖÀ½
-            ==> ÀÌ ¶§ ¿©·¯°³ÀÇ Å×ÀÌºí¿¡¼­ µ¥ÀÌÅÍ¸¦ µ¿½Ã¿¡ °Ë»öÇÏ¸é
-                Cartesian Product(CROSS JOIN)°¡ ¸¸µé¾îÁö´Âµ¥
-                ÀÌ °á°ú¿¡´Â Á¤È®ÇÏÁö ¾ÊÀº µ¥ÀÌÅÍµµ Æ÷ÇÔµÇ¾î ÀÖÀ½
-                µû¶ó¼­ Á¤È®ÇÑ µ¥ÀÌÅÍ¸¸ ÇÊÅÍ¸µÇØ¼­ ²¨³»¿Í¾ß ÇÏ´Âµ¥
-                ÀÌ ¶§ ÀÌ ÇÊÅÍ¸µÇÏ´Â ÀÛ¾÷ÀÌ JOIN
+            ê´€ê³„í˜•ë°ì´í„°ë² ì´ìŠ¤ì—ì„œëŠ” ì—¬ëŸ¬ê°œì˜ í…Œì´ë¸”ì—ì„œ ë™ì‹œì— ê²€ìƒ‰í•˜ëŠ” ê¸°ëŠ¥ì€ ì´ë¯¸ ê°€ì§€ê³  ìžˆìŒ
+            ==> ì´ ë•Œ ì—¬ëŸ¬ê°œì˜ í…Œì´ë¸”ì—ì„œ ë°ì´í„°ë¥¼ ë™ì‹œì— ê²€ìƒ‰í•˜ë©´
+                Cartesian Product(CROSS JOIN)ê°€ ë§Œë“¤ì–´ì§€ëŠ”ë°
+                ì´ ê²°ê³¼ì—ëŠ” ì •í™•í•˜ì§€ ì•Šì€ ë°ì´í„°ë„ í¬í•¨ë˜ì–´ ìžˆìŒ
+                ë”°ë¼ì„œ ì •í™•í•œ ë°ì´í„°ë§Œ í•„í„°ë§í•´ì„œ êº¼ë‚´ì™€ì•¼ í•˜ëŠ”ë°
+                ì´ ë•Œ í•„í„°ë§í•˜ëŠ” ìž‘ì—…ì´ JOIN
         
-        Á¾·ù ]
+        ì¢…ë¥˜ ]
         
             Inner Join
-            ==> ³ª¿­µÈ Å×ÀÌºíµéÀÇ °á°úÁýÇÕ ¾È¿¡¼­ ²¨³»¿À´Â Á¶ÀÎ
+            ==> ë‚˜ì—´ëœ í…Œì´ë¸”ë“¤ì˜ ê²°ê³¼ì§‘í•© ì•ˆì—ì„œ êº¼ë‚´ì˜¤ëŠ” ì¡°ì¸
                 Equi Join
-                ==> Á¶ÀÎÀ» ÇÒ ¶§ µ¿µîºñ±³¿¬»êÀÚ·Î Á¶ÀÎÇÏ´Â °æ¿ì
+                ==> ì¡°ì¸ì„ í•  ë•Œ ë™ë“±ë¹„êµì—°ì‚°ìžë¡œ ì¡°ì¸í•˜ëŠ” ê²½ìš°
                 
                 Non Equi Join
-                ==> Á¶ÀÎÀ» ÇÒ ¶§ µ¿µîºñ±³¿¬»êÀÚ ÀÌ¿ÜÀÇ ¿¬»êÀÚ·Î Á¶ÀÎÇÏ´Â °æ¿ì
+                ==> ì¡°ì¸ì„ í•  ë•Œ ë™ë“±ë¹„êµì—°ì‚°ìž ì´ì™¸ì˜ ì—°ì‚°ìžë¡œ ì¡°ì¸í•˜ëŠ” ê²½ìš°
                 
             Outer Join
-            ==> Cartesian Proudct¿¡ Æ÷ÇÔµÇÁö ¾ÊÀº µ¥ÀÌÅÍ¸¦ °¡Á®¿À´Â Á¶ÀÎ
+            ==> Cartesian Proudctì— í¬í•¨ë˜ì§€ ì•Šì€ ë°ì´í„°ë¥¼ ê°€ì ¸ì˜¤ëŠ” ì¡°ì¸
                 
-                Çü½Ä ]
+                í˜•ì‹ ]
                 
-                    Å×ÀÌºíÀÌ¸§.ÇÊµåÀÌ¸§ = Å×ÀÌºíÀÌ¸§.ÇÊµåÀÌ¸§(+)
+                    í…Œì´ë¸”ì´ë¦„.í•„ë“œì´ë¦„ = í…Œì´ë¸”ì´ë¦„.í•„ë“œì´ë¦„(+)
                     
-                    ÀÌ ¶§ (+)´Â NULL·Î Ç¥ÇöµÇ¾î¾ß ÇÒ Å×ÀÌºí ÂÊ¿¡ ºÙ¿©ÁÜ
+                    ì´ ë•Œ (+)ëŠ” NULLë¡œ í‘œí˜„ë˜ì–´ì•¼ í•  í…Œì´ë¸” ìª½ì— ë¶™ì—¬ì¤Œ
                     
             Self Join
-            ==> Á¶ÀÎÀ» ÇÏ´Âµ¥ ´ë»ó Å×ÀÌºíÀÌ °°Àº Å×ÀÌºíÀ» »ç¿ëÇÏ´Â Á¶ÀÎ
+            ==> ì¡°ì¸ì„ í•˜ëŠ”ë° ëŒ€ìƒ í…Œì´ë¸”ì´ ê°™ì€ í…Œì´ë¸”ì„ ì‚¬ìš©í•˜ëŠ” ì¡°ì¸
             
-        Âü°í ]
+        ì°¸ê³  ]
             
-            Á¶ÀÎ¿¡¼­µµ ´Ù¸¥ ÀÏ¹ÝÁ¶°Ç »ç¿ë °¡´É
+            ì¡°ì¸ì—ì„œë„ ë‹¤ë¥¸ ì¼ë°˜ì¡°ê±´ ì‚¬ìš© ê°€ëŠ¥
           
 */
 
--- ¿µ¹®»ö»óÀÌ¸§ Å×ÀÌºí
-DROP TABLE ecolor; -- Å×ÀÌºí »èÁ¦ ¸í·É
+-- ì˜ë¬¸ìƒ‰ìƒì´ë¦„ í…Œì´ë¸”
+
+DROP TABLE ecolor; -- í…Œì´ë¸” ì‚­ì œ ëª…ë ¹
 CREATE TABLE ecolor (
-    ceno NUMBER(3) -- ¿µ¹®ÄÃ·¯ ÀÏ·Ã¹øÈ£
+    ceno NUMBER(3) -- ì˜ë¬¸ì»¬ëŸ¬ ì¼ë ¨ë²ˆí˜¸
         CONSTRAINT ECLR_NO_PK PRIMARY KEY,
-    code VARCHAR2(7) -- ÄÃ·¯ ÄÚµå°ª
+    code VARCHAR2(7) -- ì»¬ëŸ¬ ì½”ë“œê°’
         CONSTRAINT ECLR_CODE_UK UNIQUE
         CONSTRAINT ECLR_CODE_NN NOT NULL,
     name varchar2(20)
         CONSTRAINT ECLR_NAME_NN NOT NULL
 );
 
--- µ¥ÀÌÅÍ Ãß°¡
+-- ë°ì´í„° ì¶”ê°€
+
 INSERT INTO
     ecolor
 VALUES(
@@ -106,10 +107,10 @@ VALUES(
 
 commit;
 
--- ¿µ¹®ÄÃ·¯ Å×ÀÌºí Á¶È¸
+-- ì˜ë¬¸ì»¬ëŸ¬ í…Œì´ë¸” ì¡°íšŒ
 
 SELECT * FROM ecolor;
-COMMIT; -- ¸Þ¸ð¸®ÀÇ ÀÛ¾÷¿µ¿ª¿¡¼­ ÀÛ¾÷ÇÑ ³»¿ëÀ» µ¥ÀÌÅÍº£ÀÌ½º¿¡ Àû¿ë½ÃÅ°´Â ¸í·É
+COMMIT; -- ë©”ëª¨ë¦¬ì˜ ìž‘ì—…ì˜ì—­ì—ì„œ ìž‘ì—…í•œ ë‚´ìš©ì„ ë°ì´í„°ë² ì´ìŠ¤ì— ì ìš©ì‹œí‚¤ëŠ” ëª…ë ¹
 
 CREATE TABLE Kcolor (
     cKno NUMBER(3)
@@ -124,19 +125,19 @@ CREATE TABLE Kcolor (
 INSERT INTO
     kcolor
 VALUES(
-    100, '#FF0000', '»¡°­'
+    100, '#FF0000', 'ë¹¨ê°•'
 );
 
 INSERT INTO
     kcolor
 VALUES(
-    101, '#00FF00', '³ì»ö'
+    101, '#00FF00', 'ë…¹ìƒ‰'
 );
 
 INSERT INTO
     kcolor
 VALUES(
-    102, '#000FF', 'ÆÄ¶û'
+    102, '#000FF', 'íŒŒëž‘'
 );
 
 commit;
@@ -160,7 +161,7 @@ SELECT
 FROM
     ecolor e, kcolor k
 WHERE
-    e.code = k.code -- Á¶ÀÎÁ¶°Ç
+    e.code = k.code -- ì¡°ì¸ì¡°ê±´
 ;
 
 -- Outer Join
@@ -174,10 +175,10 @@ WHERE
 ;
 
 -- Self Join
--- »ç¿øµéÀÇ »ç¿øÀÌ¸§, »ó»ç¹øÈ£, »ó»çÀÌ¸§, »ó»ç±Þ¿©¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ìƒì‚¬ë²ˆí˜¸, ìƒì‚¬ì´ë¦„, ìƒì‚¬ê¸‰ì—¬ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    e.ename »ç¿øÀÌ¸§, e.mgr »ó»ç¹øÈ£, s.ename »ó»çÀÌ¸§, s.sal »ó»ç±Þ¿©
+    e.ename ì‚¬ì›ì´ë¦„, e.mgr ìƒì‚¬ë²ˆí˜¸, s.ename ìƒì‚¬ì´ë¦„, s.sal ìƒì‚¬ê¸‰ì—¬
 FROM
     emp e, emp s
 WHERE
@@ -185,38 +186,38 @@ WHERE
 ;
 
 CREATE TABLE sangsa
-as
+AS
     SELECT * FROM emp;
 
--- »ç¿øµéÀÇ »ç¿øÀÌ¸§, Á÷±Þ, ±Þ¿©, ±Þ¿© µî±ÞÀ» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ì§ê¸‰, ê¸‰ì—¬, ê¸‰ì—¬ ë“±ê¸‰ì„ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, job Á÷±Þ, sal ±Þ¿©, grade ±Þ¿©µî±Þ
+    ename ì‚¬ì›ì´ë¦„, job ì§ê¸‰, sal ê¸‰ì—¬, grade ê¸‰ì—¬ë“±ê¸‰
 FROM
-    emp, salgrade -- ÄÃ·³ÀÌ °ãÄ¡Áö ¾Ê±â ¶§¹®¿¡ º°Äª ¾È ºÙ¿©µµ µÊ
+    emp, salgrade -- ì»¬ëŸ¼ì´ ê²¹ì¹˜ì§€ ì•Šê¸° ë•Œë¬¸ì— ë³„ì¹­ ì•ˆ ë¶™ì—¬ë„ ë¨
 WHERE
-    sal BETWEEN losal AND hisal -- µ¿µî¿¬»êÀÚ ¾²Áö ¾Ê¾ÒÀ¸¹Ç·Î Non Equi Join
+    sal BETWEEN losal AND hisal -- ë™ë“±ì—°ì‚°ìž ì“°ì§€ ì•Šì•˜ìœ¼ë¯€ë¡œ Non Equi Join
 ;
 
--- »ç¿øµéÀÇ »ç¿ø¹øÈ£, »ç¿øÀÌ¸§, Á÷±Þ, ºÎ¼­ÀÌ¸§, ºÎ¼­À§Ä¡¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì§ê¸‰, ë¶€ì„œì´ë¦„, ë¶€ì„œìœ„ì¹˜ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    empno »ç¿ø¹øÈ£, ename »ç¿øÀÌ¸§, job Á÷±Þ, dname ºÎ¼­ÀÌ¸§, loc ºÎ¼­À§Ä¡
+    empno ì‚¬ì›ë²ˆí˜¸, ename ì‚¬ì›ì´ë¦„, job ì§ê¸‰, dname ë¶€ì„œì´ë¦„, loc ë¶€ì„œìœ„ì¹˜
 FROM
     emp e, dept d
 WHERE
     e.deptno = d.deptno
 ;
 
--- 81³â ÀÔ»çÇÑ »ç¿øÀÇ »ç¿øÀÌ¸§, Á÷±Þ, ÀÔ»çÀÏ, ºÎ¼­ÀÌ¸§À» Á¶È¸ÇÏ¼¼¿ä.
+-- 81ë…„ ìž…ì‚¬í•œ ì‚¬ì›ì˜ ì‚¬ì›ì´ë¦„, ì§ê¸‰, ìž…ì‚¬ì¼, ë¶€ì„œì´ë¦„ì„ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, job Á÷±Þ, TO_CHAR(hiredate, 'YYYY"³â "MM"¿ù "DD"ÀÏ"') ÀÔ»çÀÏ, dname ºÎ¼­ÀÌ¸§
+    ename ì‚¬ì›ì´ë¦„, job ì§ê¸‰, TO_CHAR(hiredate, 'YYYY"ë…„ "MM"ì›” "DD"ì¼"') ìž…ì‚¬ì¼, dname ë¶€ì„œì´ë¦„
 FROM
     emp, dept
 WHERE
-    emp.deptno = dept.deptno    -- Á¶ÀÎ Á¶°Ç
-    AND TO_CHAR(hiredate, 'YY') = '81' -- ÀÏ¹Ý Á¶°Ç
+    emp.deptno = dept.deptno    -- ì¡°ì¸ ì¡°ê±´
+    AND TO_CHAR(hiredate, 'YY') = '81' -- ì¼ë°˜ ì¡°ê±´
 ;
 
 SELECT 
@@ -233,88 +234,88 @@ WHERE
 /*
 
     ANSI JOIN
-    ==> ÁúÀÇ ¸í·ÉÀº µ¥ÀÌÅÍº£ÀÌ½º(DBMS)¿¡ µû¶ó¼­ ¾à°£¾¿ ±× ¹®¹ýÀÌ ´Þ¶óÁü
+    ==> ì§ˆì˜ ëª…ë ¹ì€ ë°ì´í„°ë² ì´ìŠ¤(DBMS)ì— ë”°ë¼ì„œ ì•½ê°„ì”© ê·¸ ë¬¸ë²•ì´ ë‹¬ë¼ì§
     
-        ANSI Çü½ÄÀÌ¶õ
-        ¹Ì±¹ ±¹¸³ Ç¥ÁØ ÇùÈ¸(ANSI)¿¡¼­ °øÅëÀÇ ÁúÀÇ ¸í·ÉÀ» ¸¸µé°íÀÚ ÇØ¼­
-        ÅëÀÏµÈ ¹æ½ÄÀÇ ¸í·ÉÀ» ¸¸µé¾î ³õÀº °Í
-        µû¶ó¼­ DBMS¸¦ °¡¸®Áö ¾Ê°í ½ÇÇà µÊ
+        ANSI í˜•ì‹ì´ëž€
+        ë¯¸êµ­ êµ­ë¦½ í‘œì¤€ í˜‘íšŒ(ANSI)ì—ì„œ ê³µí†µì˜ ì§ˆì˜ ëª…ë ¹ì„ ë§Œë“¤ê³ ìž í•´ì„œ
+        í†µì¼ëœ ë°©ì‹ì˜ ëª…ë ¹ì„ ë§Œë“¤ì–´ ë†“ì€ ê²ƒ
+        ë”°ë¼ì„œ DBMSë¥¼ ê°€ë¦¬ì§€ ì•Šê³  ì‹¤í–‰ ë¨
 
 ---------------------------------------------------------------
 
     1. CROSS JOIN
-        ==> ¿À¶óÅ¬ÀÇ Cartesian Product¸¦ »ý¼ºÇÏ´Â Á¶ÀÎ
+        ==> ì˜¤ë¼í´ì˜ Cartesian Productë¥¼ ìƒì„±í•˜ëŠ” ì¡°ì¸
         
-        Çü½Ä ]
+        í˜•ì‹ ]
             
             SELECT
-                ÇÊµåÀÌ¸§, ...
+                í•„ë“œì´ë¦„, ...
             FROM
-                Å×ÀÌºí1 CROSS JOIN Å×ÀÌºí2
+                í…Œì´ë¸”1 CROSS JOIN í…Œì´ë¸”2
             ;
             
     2. INNER JOIN
         ==> Equi Join, Non Equi Join, Self Join
         
-        Çü½Ä ]
+        í˜•ì‹ ]
             
             SELECT
-                ÇÊµåÀÌ¸§, ...
+                í•„ë“œì´ë¦„, ...
             FROM
-                Å×ÀÌºí1 [INNER] JOIN Å×ÀÌºí2
+                í…Œì´ë¸”1 [INNER] JOIN í…Œì´ë¸”2
             ON
-                Á¶ÀÎÁ¶°Ç
+                ì¡°ì¸ì¡°ê±´
             ;
             
-        Âü°í ]
+        ì°¸ê³  ]
         
-            Á¶ÀÎÁ¶°ÇÀº ON Àý¿¡¼­ ±â¼úÇÏ°í
-            ÀÏ¹ÝÁ¶°ÇÀº WHERE Àý¿¡¼­ ±â¼úÇÔ
+            ì¡°ì¸ì¡°ê±´ì€ ON ì ˆì—ì„œ ê¸°ìˆ í•˜ê³ 
+            ì¼ë°˜ì¡°ê±´ì€ WHERE ì ˆì—ì„œ ê¸°ìˆ í•¨
             
-        Âü°í ]
+        ì°¸ê³  ]
         
-            INNER JOINÀÌ °¡Àå ÀÏ¹ÝÀûÀÎ Á¶ÀÎÀÌ±â ¶§¹®¿¡ INNER¶ó´Â ´Ü¾î¸¦ »ý·«ÇÏ¸é
-            INNER JOINÀ» ÇØ¼®ÇØ¼­ ½ÇÇàÇÏ°Ô µÊ
+            INNER JOINì´ ê°€ìž¥ ì¼ë°˜ì ì¸ ì¡°ì¸ì´ê¸° ë•Œë¬¸ì— INNERë¼ëŠ” ë‹¨ì–´ë¥¼ ìƒëžµí•˜ë©´
+            INNER JOINì„ í•´ì„í•´ì„œ ì‹¤í–‰í•˜ê²Œ ë¨
             
     3. OUTER JOIN
-        ==> Cartesian Product¿¡ ¾ø´Â °á°ú¸¦ Á¶È¸ÇÏ´Â Á¶ÀÎ ¸í·É
+        ==> Cartesian Productì— ì—†ëŠ” ê²°ê³¼ë¥¼ ì¡°íšŒí•˜ëŠ” ì¡°ì¸ ëª…ë ¹
         
-        Çü½Ä ]
+        í˜•ì‹ ]
             
             SELECT
-                ÇÊµåÀÌ¸§, ...
+                í•„ë“œì´ë¦„, ...
             FROM
-                Å×ÀÌºí1 LEFT ¶Ç´Â RIGHT ¶Ç´Â FULL OUTER JOIN Å×ÀÌºí2 
-                ==> ÀÌ ¶§ ¹æÇâÀº µ¥ÀÌÅÍ°¡ ÀÖ´Â Å×ÀÌºí ¹æÇâÀ» ±â¼úÇÏ¸é µÊ
+                í…Œì´ë¸”1 LEFT ë˜ëŠ” RIGHT ë˜ëŠ” FULL OUTER JOIN í…Œì´ë¸”2 
+                ==> ì´ ë•Œ ë°©í–¥ì€ ë°ì´í„°ê°€ ìžˆëŠ” í…Œì´ë¸” ë°©í–¥ì„ ê¸°ìˆ í•˜ë©´ ë¨
             ON
-                Á¶ÀÎÁ¶°Ç
+                ì¡°ì¸ì¡°ê±´
             ;
             
-        Âü°í ]
+        ì°¸ê³  ]
             
-            Á¶ÀÎÀÌ 2°³ ÀÌ»ó µÇ´Â °æ¿ì
+            ì¡°ì¸ì´ 2ê°œ ì´ìƒ ë˜ëŠ” ê²½ìš°
             
-                Çü½Ä ]
+                í˜•ì‹ ]
                         
                     SELECT
                     
                     FROM
-                        Å×ÀÌºíÀÌ¸§ 
+                        í…Œì´ë¸”ì´ë¦„ 
                     JOIN 
-                        Å×ÀÌºí2
+                        í…Œì´ë¸”2
                     ON
-                        Á¶ÀÎÁ¶°Ç
+                        ì¡°ì¸ì¡°ê±´
                     JOIN
-                        Å×ÀÌºí3
+                        í…Œì´ë¸”3
                     ON
-                        Á¶ÀÎÁ¶°Ç2
+                        ì¡°ì¸ì¡°ê±´2
                     ;
                     
 */
 
 -- ANSI JOIN
 -- CROSS JOIN
--- »ç¿øÁ¤º¸¿Í ºÎ¼­Á¤º¸¸¦ Å©·Î½º Á¶ÀÎÇÏ¼¼¿ä.
+-- ì‚¬ì›ì •ë³´ì™€ ë¶€ì„œì •ë³´ë¥¼ í¬ë¡œìŠ¤ ì¡°ì¸í•˜ì„¸ìš”.
 
 SELECT
     *
@@ -323,62 +324,62 @@ FROM
 ;
 
 -- INNER JOIN
--- »ç¿øµéÀÇ »ç¿øÀÌ¸§, Á÷±Þ, ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§À» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ì§ê¸‰, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„ì„ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, job Á÷±Þ, e.deptno ºÎ¼­¹øÈ£, dname ºÎ¼­ÀÌ¸§
+    ename ì‚¬ì›ì´ë¦„, job ì§ê¸‰, e.deptno ë¶€ì„œë²ˆí˜¸, dname ë¶€ì„œì´ë¦„
 FROM
     emp e INNER JOIN dept d
-ON -- Á¶ÀÎ Á¶°ÇÀý
+ON -- ì¡°ì¸ ì¡°ê±´ì ˆ
     e.deptno = d.deptno
 ;
 
--- 81³â ÀÔ»çÇÑ »ç¿øµéÀÇ »ç¿øÀÌ¸§, Á÷±Þ, ÀÔ»ç³âµµ, ºÎ¼­ÀÌ¸§À» Á¶È¸ÇÏ¼¼¿ä.
+-- 81ë…„ ìž…ì‚¬í•œ ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ì§ê¸‰, ìž…ì‚¬ë…„ë„, ë¶€ì„œì´ë¦„ì„ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, job Á÷±Þ, TO_CHAR(hiredate, 'YY') ÀÔ»ç³âµµ, dname ºÎ¼­ÀÌ¸§
+    ename ì‚¬ì›ì´ë¦„, job ì§ê¸‰, TO_CHAR(hiredate, 'YY') ìž…ì‚¬ë…„ë„, dname ë¶€ì„œì´ë¦„
 FROM
     emp e INNER JOIN dept d
-ON -- Á¶ÀÎÁ¶°Ç
+ON -- ì¡°ì¸ì¡°ê±´
     e.deptno = d.deptno
 WHERE
     TO_CHAR(hiredate, 'YY') = '81'
 ;
 
--- »ç¿øµéÀÇ »ç¿øÀÌ¸§, ±Þ¿©, ±Þ¿©µî±ÞÀ» Á¶È¸ÇÏ¼¼¿ä. Non Equi Join
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ê¸‰ì—¬, ê¸‰ì—¬ë“±ê¸‰ì„ ì¡°íšŒí•˜ì„¸ìš”. Non Equi Join
 
 SELECT
-    ename »ç¿øÀÌ¸§, sal ±Þ¿©, grade ±Þ¿©µî±Þ
+    ename ì‚¬ì›ì´ë¦„, sal ê¸‰ì—¬, grade ê¸‰ì—¬ë“±ê¸‰
 FROM
     emp JOIN salgrade
 ON
     sal BETWEEN losal AND hisal
 ;
 
--- »ç¿øµéÀÇ »ç¿øÀÌ¸§, »ó»çÀÌ¸§À» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ìƒì‚¬ì´ë¦„ì„ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    e.ename »ç¿øÀÌ¸§, s.ename »ó»çÀÌ¸§
+    e.ename ì‚¬ì›ì´ë¦„, s.ename ìƒì‚¬ì´ë¦„
 FROM
     emp e JOIN emp s
 ON
-    e.mgr = s.empno -- ANSI¿¡¼­´Â (+) ¾²Áö ¾ÊÀ½
+    e.mgr = s.empno -- ANSIì—ì„œëŠ” (+) ì“°ì§€ ì•ŠìŒ
 ;
 
--- »ç¿øµéÀÇ »ç¿øÀÌ¸§, »ó»çÀÌ¸§À» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ìƒì‚¬ì´ë¦„ì„ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    e.ename »ç¿øÀÌ¸§, NVL(s.ename, '»ó»ç¾øÀ½') »ó»çÀÌ¸§
+    e.ename ì‚¬ì›ì´ë¦„, NVL(s.ename, 'ìƒì‚¬ì—†ìŒ') ìƒì‚¬ì´ë¦„
 FROM
     emp e LEFT OUTER JOIN emp s
 ON
     e.mgr = s.empno
 ;
 
--- »ç¿øµéÀÇ »ç¿øÀÌ¸§, ºÎ¼­ÀÌ¸§, ±Þ¿©, ±Þ¿©µî±ÞÀ» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ë¶€ì„œì´ë¦„, ê¸‰ì—¬, ê¸‰ì—¬ë“±ê¸‰ì„ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, dname ºÎ¼­ÀÌ¸§, sal ±Þ¿©, grade ±Þ¿©µî±Þ
+    ename ì‚¬ì›ì´ë¦„, dname ë¶€ì„œì´ë¦„, sal ê¸‰ì—¬, grade ê¸‰ì—¬ë“±ê¸‰
 FROM
     emp e
 JOIN
@@ -396,52 +397,52 @@ ON
 /*
     
     NATURAL JOIN
-    ==> ÀÚµ¿ Á¶ÀÎ
-        ¹Ýµå½Ã Á¶ÀÎ Á¶°Ç½Ä¿¡ »ç¿ëÇÏ´Â ÇÊµåÀÇ ÀÌ¸§ÀÌ µ¿ÀÏÇÏ°í
-        ¹Ýµå½Ã µ¿ÀÏÇÑ ÇÊµå°¡ ÇÑ°³ÀÏ ¶§ »ç¿ëÇÒ ¼ö ÀÖ´Â Á¶ÀÎ
-        ÀÚµ¿À¸·Î Áßº¹µÇ´Â ÇÊµå¸¦ »ç¿ëÇØ¼­ Á¶ÀÎÀ» ÇÏ±â ¶§¹®¿¡
-        Á¶ÀÎÁ¶°ÇÀ» ±â¼úÇÏÁö ¾ÊÀ½
+    ==> ìžë™ ì¡°ì¸
+        ë°˜ë“œì‹œ ì¡°ì¸ ì¡°ê±´ì‹ì— ì‚¬ìš©í•˜ëŠ” í•„ë“œì˜ ì´ë¦„ì´ ë™ì¼í•˜ê³ 
+        ë°˜ë“œì‹œ ë™ì¼í•œ í•„ë“œê°€ í•œê°œì¼ ë•Œ ì‚¬ìš©í•  ìˆ˜ ìžˆëŠ” ì¡°ì¸
+        ìžë™ìœ¼ë¡œ ì¤‘ë³µë˜ëŠ” í•„ë“œë¥¼ ì‚¬ìš©í•´ì„œ ì¡°ì¸ì„ í•˜ê¸° ë•Œë¬¸ì—
+        ì¡°ì¸ì¡°ê±´ì„ ê¸°ìˆ í•˜ì§€ ì•ŠìŒ
         
-        Çü½Ä ]
+        í˜•ì‹ ]
         
             SELECT
-                ÇÊµåÀÌ¸§, ...
+                í•„ë“œì´ë¦„, ...
             FROM
-                Å×ÀÌºí1
+                í…Œì´ë¸”1
             NATURAL JOIN
-                Å×ÀÌºí2
+                í…Œì´ë¸”2
             ;
             
     USING JOIN
-    ==> ¹Ýµå½Ã Á¶ÀÎ Á¶°Ç½Ä¿¡ »ç¿ëÇÏ´Â ÇÊµåÀÇ ÀÌ¸§ÀÌ µ¿ÀÏÇÑ °æ¿ì
-        ±×¸®°í °°Àº ÀÌ¸§ÀÇ ÇÊµå°¡ ¿©·¯°³ Á¸ÀçÇØµµ ¹«¹æÇÔ
+    ==> ë°˜ë“œì‹œ ì¡°ì¸ ì¡°ê±´ì‹ì— ì‚¬ìš©í•˜ëŠ” í•„ë“œì˜ ì´ë¦„ì´ ë™ì¼í•œ ê²½ìš°
+        ê·¸ë¦¬ê³  ê°™ì€ ì´ë¦„ì˜ í•„ë“œê°€ ì—¬ëŸ¬ê°œ ì¡´ìž¬í•´ë„ ë¬´ë°©í•¨
     
-        Çü½Ä ]
+        í˜•ì‹ ]
             
             SELECT
-                ÇÊµåÀÌ¸§, ...
+                í•„ë“œì´ë¦„, ...
             FROM
-                Å×ÀÌºí1
+                í…Œì´ë¸”1
             JOIN
-                Å×ÀÌºí2
+                í…Œì´ë¸”2
             USING
-                (Á¶ÀÎ¿¡ »ç¿ëÇÒ ÇÊµåÀÌ¸§)
+                (ì¡°ì¸ì— ì‚¬ìš©í•  í•„ë“œì´ë¦„)
             ;
             
 */
 
--- »ç¿øµéÀÇ »ç¿øÀÌ¸§, ºÎ¼­ÀÌ¸§À» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ë¶€ì„œì´ë¦„ì„ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, dname ºÎ¼­ÀÌ¸§
+    ename ì‚¬ì›ì´ë¦„, dname ë¶€ì„œì´ë¦„
 FROM
     emp
 NATURAL JOIN
     dept
 ;
 
--- TMP Å×ÀÌºí°ú ºÎ¼­Á¤º¸Å×ÀÌºíÀ» ÀÌ¿ëÇØ¼­
--- »ç¿øµéÀÇ »ç¿øÀÌ¸§, ºÎ¼­À§Ä¡¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- TMP í…Œì´ë¸”ê³¼ ë¶€ì„œì •ë³´í…Œì´ë¸”ì„ ì´ìš©í•´ì„œ
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ë¶€ì„œìœ„ì¹˜ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
     ename, loc
@@ -457,62 +458,62 @@ USING
 
 /*
 
-    ºÎÁúÀÇ(SUB QUERY, ¼­ºêÁúÀÇ)
-    ==> ÁúÀÇ¸í·É ¾È¿¡ ´Ù½Ã ÁúÀÇ¸í·ÉÀ» Æ÷ÇÔÇÏ´Â °æ¿ì
-        Æ÷ÇÔµÇ´Â ±× ÁúÀÇ¸í·ÉÀ» ¼­ºêÁúÀÇ ¶Ç´Â ¼­ºêÄõ¸®
+    ë¶€ì§ˆì˜(SUB QUERY, ì„œë¸Œì§ˆì˜)
+    ==> ì§ˆì˜ëª…ë ¹ ì•ˆì— ë‹¤ì‹œ ì§ˆì˜ëª…ë ¹ì„ í¬í•¨í•˜ëŠ” ê²½ìš°
+        í¬í•¨ë˜ëŠ” ê·¸ ì§ˆì˜ëª…ë ¹ì„ ì„œë¸Œì§ˆì˜ ë˜ëŠ” ì„œë¸Œì¿¼ë¦¬
         
-        ¿¹ ]
+        ì˜ˆ ]
         
-            ÀÌ¸§ÀÌ SMITHÀÎ »ç¿ø°ú °°Àº ºÎ¼­¿¡ ÀÖ´Â »ç¿øµéÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
-            ==> ÀÌ °æ¿ì SMITHÀÇ ºÎ¼­¹øÈ£¸¦ ¾Ë¾Æ³»±â À§ÇØ¼­ ¸ÕÀú ÁúÀÇ¸í·ÉÀÌ ½ÇÇàµÇ¾î¾ß ÇÔ
+            ì´ë¦„ì´ SMITHì¸ ì‚¬ì›ê³¼ ê°™ì€ ë¶€ì„œì— ìžˆëŠ” ì‚¬ì›ë“¤ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
+            ==> ì´ ê²½ìš° SMITHì˜ ë¶€ì„œë²ˆí˜¸ë¥¼ ì•Œì•„ë‚´ê¸° ìœ„í•´ì„œ ë¨¼ì € ì§ˆì˜ëª…ë ¹ì´ ì‹¤í–‰ë˜ì–´ì•¼ í•¨
             
-            ==> ²¨³»¿Â ºÎ¼­¹øÈ£¸¦ ÀÌ¿ëÇØ¼­ Á¤º¸¸¦ Á¶È¸
+            ==> êº¼ë‚´ì˜¨ ë¶€ì„œë²ˆí˜¸ë¥¼ ì´ìš©í•´ì„œ ì •ë³´ë¥¼ ì¡°íšŒ
             
-            ÀÌ ¶§ À§ÀÇ ÁúÀÇ¸í·ÉÀ» ¾Æ·¡ ¸ÞÀÎ ÁúÀÇ¸í·É¿¡¼­ Á¶È¸ÇØ¼­ »ç¿ëÇØ¾ß ÇÔ
+            ì´ ë•Œ ìœ„ì˜ ì§ˆì˜ëª…ë ¹ì„ ì•„ëž˜ ë©”ì¸ ì§ˆì˜ëª…ë ¹ì—ì„œ ì¡°íšŒí•´ì„œ ì‚¬ìš©í•´ì•¼ í•¨
             
-        Âü°í ]
+        ì°¸ê³  ]
             
-            ÀÌ ¶§ ¼­ºêÁúÀÇ¸¦ °¨½Î´Â ÁúÀÇ¸í·ÉÀ» ¸ÞÀÎ ÁúÀÇ¸í·ÉÀÌ¶ó ºÎ¸§
+            ì´ ë•Œ ì„œë¸Œì§ˆì˜ë¥¼ ê°ì‹¸ëŠ” ì§ˆì˜ëª…ë ¹ì„ ë©”ì¸ ì§ˆì˜ëª…ë ¹ì´ë¼ ë¶€ë¦„
         
-        ¼­ºêÁúÀÇÀÇ À§Ä¡¿¡ µû¸¥ °á°ú
+        ì„œë¸Œì§ˆì˜ì˜ ìœ„ì¹˜ì— ë”°ë¥¸ ê²°ê³¼
             
-            1. SELECT Àý
-            ==> ÀÌ ºÎºÐ¿¡ »ç¿ëµÇ´Â ÁúÀÇ¸í·ÉÀº °á°ú°¡ ¹Ýµå½Ã ÇÑ Çà, ÇÑ ÇÊµå°¡ ³ª¿Í¾ß ÇÔ
-            2. FROM Àý
-            ==> FROM Àý¿¡´Â Å×ÀÌºíÀÌ ³ª¿­µÇ¾î¾ß ÇÔ
-                ±×·±µ¥ Á¶È¸ ÁúÀÇ ¸í·ÉÀÇ °á°ú´Â ¸¶Ä¡ Å×ÀÌºí°ú °°À½
-                ±×·¯¸é ÀÌ Á¶È¸ ÁúÀÇ ¸í·ÉÀÇ °á°ú¸¦ Å×ÀÌºíÃ³·³ »ç¿ëÇÒ ¼ö ÀÖ´Â ¹æ¹ý
+            1. SELECT ì ˆ
+            ==> ì´ ë¶€ë¶„ì— ì‚¬ìš©ë˜ëŠ” ì§ˆì˜ëª…ë ¹ì€ ê²°ê³¼ê°€ ë°˜ë“œì‹œ í•œ í–‰, í•œ í•„ë“œê°€ ë‚˜ì™€ì•¼ í•¨
+            2. FROM ì ˆ
+            ==> FROM ì ˆì—ëŠ” í…Œì´ë¸”ì´ ë‚˜ì—´ë˜ì–´ì•¼ í•¨
+                ê·¸ëŸ°ë° ì¡°íšŒ ì§ˆì˜ ëª…ë ¹ì˜ ê²°ê³¼ëŠ” ë§ˆì¹˜ í…Œì´ë¸”ê³¼ ê°™ìŒ
+                ê·¸ëŸ¬ë©´ ì´ ì¡°íšŒ ì§ˆì˜ ëª…ë ¹ì˜ ê²°ê³¼ë¥¼ í…Œì´ë¸”ì²˜ëŸ¼ ì‚¬ìš©í•  ìˆ˜ ìžˆëŠ” ë°©ë²•
                 
-                ÀÌ ¶§ FROM Àý ¾È¿¡ µé¾î°¡´Â ¼­ºêÁúÀÇ¸¦
-                Æ¯º°È÷ ¸¶Ä¡ Å×ÀÌºí°ú °°´Ù ÇØ¼­
-                    INLINE TABLEÀÌ¶ó°í ºÎ¸§
+                ì´ ë•Œ FROM ì ˆ ì•ˆì— ë“¤ì–´ê°€ëŠ” ì„œë¸Œì§ˆì˜ë¥¼
+                íŠ¹ë³„ížˆ ë§ˆì¹˜ í…Œì´ë¸”ê³¼ ê°™ë‹¤ í•´ì„œ
+                    INLINE TABLEì´ë¼ê³  ë¶€ë¦„
                     
-                ÀÌ ¶§ »ç¿ëÀº ÁúÀÇ¸í·ÉÀ» º¸³¾ ¶§ »ç¿ëÇÑ º°ÄªÀ» »ç¿ëÇØ¼­
-                µ¥ÀÌÅÍ¸¦ ²¨³»¾ß ÇÔ
+                ì´ ë•Œ ì‚¬ìš©ì€ ì§ˆì˜ëª…ë ¹ì„ ë³´ë‚¼ ë•Œ ì‚¬ìš©í•œ ë³„ì¹­ì„ ì‚¬ìš©í•´ì„œ
+                ë°ì´í„°ë¥¼ êº¼ë‚´ì•¼ í•¨
             
-            3. WHERE Àý
-                1. ´ÜÀÏÇà ´ÜÀÏÇÊµå·Î °á°ú°¡ ¹ß»ýÇÏ´Â °æ¿ì
-                ==> °á°ú¸¦ ºñ±³¿¡ »ç¿ëÇÏ¸é µÊ
-                2. ´ÙÁßÇà ´ÜÀÏÇÊµå·Î °á°ú°¡ ¹ß»ýÇÏ´Â °æ¿ì
+            3. WHERE ì ˆ
+                1. ë‹¨ì¼í–‰ ë‹¨ì¼í•„ë“œë¡œ ê²°ê³¼ê°€ ë°œìƒí•˜ëŠ” ê²½ìš°
+                ==> ê²°ê³¼ë¥¼ ë¹„êµì— ì‚¬ìš©í•˜ë©´ ë¨
+                2. ë‹¤ì¤‘í–‰ ë‹¨ì¼í•„ë“œë¡œ ê²°ê³¼ê°€ ë°œìƒí•˜ëŠ” ê²½ìš°
                     
-                    Âü°í ]
+                    ì°¸ê³  ]
                         
-                        ¼­ºêÁúÀÇÀÇ °á°ú°¡ ´ÙÁßÇàÀ¸·Î ¹ß»ýÇÏ´Â °æ¿ì
-                        ÀÌ ¶§ »ç¿ëÇÏ´Â ¿¬»êÀÚ
+                        ì„œë¸Œì§ˆì˜ì˜ ê²°ê³¼ê°€ ë‹¤ì¤‘í–‰ìœ¼ë¡œ ë°œìƒí•˜ëŠ” ê²½ìš°
+                        ì´ ë•Œ ì‚¬ìš©í•˜ëŠ” ì—°ì‚°ìž
                         
-                        IN  : ¿©·¯°³ÀÇ µ¥ÀÌÅÍ Áß ÇÏ³ª¸¸ ¸ÂÀ¸¸é µÇ´Â °æ¿ì
-                            ==> ¹¬½ÃÀûÀ¸·Î ¿©·¯°ª Áß ÇÏ³ª¿Í µ¿µîºñ±³Ã³¸®¸¦ ÇÔ
+                        IN  : ì—¬ëŸ¬ê°œì˜ ë°ì´í„° ì¤‘ í•˜ë‚˜ë§Œ ë§žìœ¼ë©´ ë˜ëŠ” ê²½ìš°
+                            ==> ë¬µì‹œì ìœ¼ë¡œ ì—¬ëŸ¬ê°’ ì¤‘ í•˜ë‚˜ì™€ ë™ë“±ë¹„êµì²˜ë¦¬ë¥¼ í•¨
                             
-                        ANY : ¿©·¯°³ÀÇ µ¥ÀÌÅÍ Áß ÇÏ³ª¸¸ ¸ÂÀ¸¸é µÇ´Â °æ¿ì
-                            ==> ´ë¼Òºñ±³ ¿¬»êÀÚµµ »ç¿ë °¡´É
+                        ANY : ì—¬ëŸ¬ê°œì˜ ë°ì´í„° ì¤‘ í•˜ë‚˜ë§Œ ë§žìœ¼ë©´ ë˜ëŠ” ê²½ìš°
+                            ==> ëŒ€ì†Œë¹„êµ ì—°ì‚°ìžë„ ì‚¬ìš© ê°€ëŠ¥
                             
-                        ALL : ¿©·¯°³ÀÇ µ¥ÀÌÅÍ°¡ ¸ðµÎ ¸ÂÀ¸¸é µÇ´Â °æ¿ì
-                            ==> µ¿µîºñ±³´Â »ç¿ëÇÒ ¼ö ¾ø°í
-                                ´ë¼Òºñ±³ÇÒ ¶§ »ç¿ë
+                        ALL : ì—¬ëŸ¬ê°œì˜ ë°ì´í„°ê°€ ëª¨ë‘ ë§žìœ¼ë©´ ë˜ëŠ” ê²½ìš°
+                            ==> ë™ë“±ë¹„êµëŠ” ì‚¬ìš©í•  ìˆ˜ ì—†ê³ 
+                                ëŒ€ì†Œë¹„êµí•  ë•Œ ì‚¬ìš©
                         
-                3. ´ÙÁßÇà ´ÙÁßÇÊµå·Î °á°ú°¡ ¹ß»ýÇÏ´Â °æ¿ì
+                3. ë‹¤ì¤‘í–‰ ë‹¤ì¤‘í•„ë“œë¡œ ê²°ê³¼ê°€ ë°œìƒí•˜ëŠ” ê²½ìš°
                     
-                    EXISTS : ÁúÀÇ¸í·ÉÀÇ °á°ú°¡ ÀÖÀ¸¸é Âü, ¾øÀ¸¸é °ÅÁþ
+                    EXISTS : ì§ˆì˜ëª…ë ¹ì˜ ê²°ê³¼ê°€ ìžˆìœ¼ë©´ ì°¸, ì—†ìœ¼ë©´ ê±°ì§“
             
 */
 
@@ -531,10 +532,10 @@ WHERE
     )
 ;
 
--- »ç¿øµéÀÇ »ç¿øÀÌ¸§, ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§, ºÎ¼­À§Ä¡¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„, ë¶€ì„œìœ„ì¹˜ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, deptno ºÎ¼­¹øÈ£, 
+    ename ì‚¬ì›ì´ë¦„, deptno ë¶€ì„œë²ˆí˜¸, 
     (
         SELECT
             dname
@@ -542,7 +543,7 @@ SELECT
             dept
         WHERE
             deptno = e.deptno
-    ) ºÎ¼­ÀÌ¸§,
+    ) ë¶€ì„œì´ë¦„,
     (
         SELECT
             loc
@@ -550,15 +551,15 @@ SELECT
             dept
         WHERE
             deptno = e.deptno
-    ) ºÎ¼­À§Ä¡
+    ) ë¶€ì„œìœ„ì¹˜
     
 FROM
     emp e
 ;
 
--- Á¶°ÇÀý¿¡ ´ÜÀÏÇà ´ÜÀÏÇÊµåÀÇ °á°ú
+-- ì¡°ê±´ì ˆì— ë‹¨ì¼í–‰ ë‹¨ì¼í•„ë“œì˜ ê²°ê³¼
 
--- SMITH »ç¿ø°ú µ¿ÀÏÇÑ ºÎ¼­ÀÇ »ç¿øµéÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- SMITH ì‚¬ì›ê³¼ ë™ì¼í•œ ë¶€ì„œì˜ ì‚¬ì›ë“¤ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
     *
@@ -575,10 +576,10 @@ WHERE
                 )
 ;
 
--- 10¹ø ºÎ¼­ »ç¿øµé°ú °°Àº Á÷±ÞÀÇ Á÷±Þ Æò±ÕÀ» Á¶È¸ÇÏ¼¼¿ä.
+-- 10ë²ˆ ë¶€ì„œ ì‚¬ì›ë“¤ê³¼ ê°™ì€ ì§ê¸‰ì˜ ì§ê¸‰ í‰ê· ì„ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    job Á÷±ÞÀÌ¸§, AVG(sal) Á÷±Þ±Þ¿©Æò±Õ
+    job ì§ê¸‰ì´ë¦„, AVG(sal) ì§ê¸‰ê¸‰ì—¬í‰ê· 
 FROM
     emp
 WHERE
@@ -588,7 +589,7 @@ WHERE
             FROM
                 emp
             WHERE
-                deptno = 10 -- ÁúÀÇ¸í·ÉÀÇ °á°ú´Â ´ÙÁß°ªÀ¸·Î ¹ß»ý 
+                deptno = 10 -- ì§ˆì˜ëª…ë ¹ì˜ ê²°ê³¼ëŠ” ë‹¤ì¤‘ê°’ìœ¼ë¡œ ë°œìƒ 
                             --      MANAGER, PRESIDENT, CLERK
         )
 
@@ -600,12 +601,12 @@ GROUP BY
 
 ---------------------------------------------------------------
 
--- IN ¿¬»êÀÚ
--- Á÷±ÞÀÌ MANAGERÀÎ »ç¿ø°ú °°Àº ºÎ¼­¿¡ ¼ÓÇÑ »ç¿øµéÀÇ
--- »ç¿øÀÌ¸§, Á÷±Þ, ºÎ¼­¹øÈ£¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- IN ì—°ì‚°ìž
+-- ì§ê¸‰ì´ MANAGERì¸ ì‚¬ì›ê³¼ ê°™ì€ ë¶€ì„œì— ì†í•œ ì‚¬ì›ë“¤ì˜
+-- ì‚¬ì›ì´ë¦„, ì§ê¸‰, ë¶€ì„œë²ˆí˜¸ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, job Á÷±Þ, deptno ºÎ¼­¹øÈ£
+    ename ì‚¬ì›ì´ë¦„, job ì§ê¸‰, deptno ë¶€ì„œë²ˆí˜¸
 FROM
     emp
 WHERE
@@ -620,11 +621,11 @@ WHERE
 ;
 
 -- ANY
--- °¢ ºÎ¼­ÀÇ Æò±Õ ±Þ¿©º¸´Ù ÇÑ ºÎ¼­¶óµµ ±Þ¿©°¡ ³ôÀº »ç¿øµéÀÇ
--- »ç¿øÀÌ¸§, »ç¿ø±Þ¿©, ºÎ¼­¹øÈ£¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ê° ë¶€ì„œì˜ í‰ê·  ê¸‰ì—¬ë³´ë‹¤ í•œ ë¶€ì„œë¼ë„ ê¸‰ì—¬ê°€ ë†’ì€ ì‚¬ì›ë“¤ì˜
+-- ì‚¬ì›ì´ë¦„, ì‚¬ì›ê¸‰ì—¬, ë¶€ì„œë²ˆí˜¸ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, sal »ç¿ø±Þ¿©, deptno ºÎ¼­¹øÈ£
+    ename ì‚¬ì›ì´ë¦„, sal ì‚¬ì›ê¸‰ì—¬, deptno ë¶€ì„œë²ˆí˜¸
 FROM
     emp
 WHERE
@@ -638,12 +639,12 @@ WHERE
             )
 ;
 
--- ALL ¿¬»êÀÚ
--- ¸ðµç °¢ ºÎ¼­ÀÇ ±Þ¿© Æò±Õº¸´Ù ³ôÀº ±Þ¿©¸¦ ¹Þ´Â »ç¿øµéÀÇ
--- »ç¿øÀÌ¸§, »ç¿ø±Þ¿©, ºÎ¼­¹øÈ£¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ALL ì—°ì‚°ìž
+-- ëª¨ë“  ê° ë¶€ì„œì˜ ê¸‰ì—¬ í‰ê· ë³´ë‹¤ ë†’ì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ì›ë“¤ì˜
+-- ì‚¬ì›ì´ë¦„, ì‚¬ì›ê¸‰ì—¬, ë¶€ì„œë²ˆí˜¸ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, sal »ç¿ø±Þ¿©, deptno ºÎ¼­¹øÈ£
+    ename ì‚¬ì›ì´ë¦„, sal ì‚¬ì›ê¸‰ì—¬, deptno ë¶€ì„œë²ˆí˜¸
 FROM
     emp
 WHERE
@@ -658,26 +659,26 @@ WHERE
 ;
 
 -- EXISTS
--- »ç¿ø Áß 40¹ø ºÎ¼­ »ç¿øÀÌ Á¸ÀçÇÏ¸é 
--- ¸ðµç »ç¿øµéÀÇ »ç¿øÀÌ¸§, ºÎ¼­¹øÈ£¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì› ì¤‘ 40ë²ˆ ë¶€ì„œ ì‚¬ì›ì´ ì¡´ìž¬í•˜ë©´ 
+-- ëª¨ë“  ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ë¶€ì„œë²ˆí˜¸ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    scott.emp.ename »ç¿øÀÌ¸§, scott.emp.deptno ºÎ¼­¹øÈ£
+    scott.emp.ename ì‚¬ì›ì´ë¦„, scott.emp.deptno ë¶€ì„œë²ˆí˜¸
 FROM
     scott.emp
     
     /*
         
-        Å×ÀÌºíÀ» °¡¸®Å³ ¶§ ¿øÄ¢Àº
-            °èÁ¤.Å×ÀÌºíÀÌ¸§
-        ÀÇ Çü½ÄÀ¸·Î »ç¿ëÇØ¾ß ÇÔ
-        ÇÏÁö¸¸ Á¢¼Ó°èÁ¤ÀÌ °¡Áö°í ÀÖ´Â Å×ÀÌºí¿¡ ÇÑÇØ¼­´Â
-        Å×ÀÌºíÀÌ¸§¸¸ ±â¼úÇØµµ µÊ
+        í…Œì´ë¸”ì„ ê°€ë¦¬í‚¬ ë•Œ ì›ì¹™ì€
+            ê³„ì •.í…Œì´ë¸”ì´ë¦„
+        ì˜ í˜•ì‹ìœ¼ë¡œ ì‚¬ìš©í•´ì•¼ í•¨
+        í•˜ì§€ë§Œ ì ‘ì†ê³„ì •ì´ ê°€ì§€ê³  ìžˆëŠ” í…Œì´ë¸”ì— í•œí•´ì„œëŠ”
+        í…Œì´ë¸”ì´ë¦„ë§Œ ê¸°ìˆ í•´ë„ ë¨
         
     */
     
 WHERE
-    EXISTS ( -- ºÎÁ¤Àº NOT EXISTS·Î Ç¥Çö
+    EXISTS ( -- ë¶€ì •ì€ NOT EXISTSë¡œ í‘œí˜„
                 SELECT
                     *
                 FROM
@@ -689,10 +690,10 @@ WHERE
 
 ---------------------------------------------------------------
 
--- »ç¿øµéÀÇ »ç¿øÀÌ¸§, ºÎ¼­¹øÈ£, ºÎ¼­¿ø¼ö, ºÎ¼­Æò±Õ±Þ¿©, ºÎ¼­±Þ¿©ÇÕ°è¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ë“¤ì˜ ì‚¬ì›ì´ë¦„, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì›ìˆ˜, ë¶€ì„œí‰ê· ê¸‰ì—¬, ë¶€ì„œê¸‰ì—¬í•©ê³„ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, deptno ºÎ¼­¹øÈ£, cnt ºÎ¼­¿ø¼ö, avg ºÎ¼­Æò±Õ±Þ¿©, sum ºÎ¼­±Þ¿©ÇÕ°è
+    ename ì‚¬ì›ì´ë¦„, deptno ë¶€ì„œë²ˆí˜¸, cnt ë¶€ì„œì›ìˆ˜, avg ë¶€ì„œí‰ê· ê¸‰ì—¬, sum ë¶€ì„œê¸‰ì—¬í•©ê³„
 FROM
     emp,
     (
@@ -709,11 +710,11 @@ WHERE
 
 ---------------------------------------------------------------
 
--- È¸»ç Æò±Õ±Þ¿©º¸´Ù Àû°Ô ¹Þ´Â »ç¿øµéÀÇ
--- »ç¿øÀÌ¸§, Á÷±Þ, ÀÔ»çÀÏ, ±Þ¿©¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- íšŒì‚¬ í‰ê· ê¸‰ì—¬ë³´ë‹¤ ì ê²Œ ë°›ëŠ” ì‚¬ì›ë“¤ì˜
+-- ì‚¬ì›ì´ë¦„, ì§ê¸‰, ìž…ì‚¬ì¼, ê¸‰ì—¬ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§, job Á÷±Þ, hiredate ÀÔ»çÀÏ, sal ±Þ¿©
+    ename ì‚¬ì›ì´ë¦„, job ì§ê¸‰, hiredate ìž…ì‚¬ì¼, sal ê¸‰ì—¬
 FROM
     emp
 WHERE
